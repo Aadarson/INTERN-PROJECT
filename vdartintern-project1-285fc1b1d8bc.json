@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vdartintern-project1",
+  "private_key_id": "285fc1b1d8bc701c52f732822d900b03696327d2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCxhlWOQLzkkHGq\nrEUANpTvbjt5x2Et4Hhxs3Y2vLZH9hSU4PFtVDDVmPljwPANQ1+PrCVh9KOD6Tyh\nXChIITf/DtZVP/Phdy1KD8wI0X7Ziw8BK6B+JTFjV/TM8byjSmC1t4Mm6jiVVWxP\nUTGZMCb4x+xTwa+nHZnonzWMykGf5TTmXWHotj08p+SBLPZBnL+EbmHxfgegW9Rn\nJZAmydqSx4gumaczB7ssYIBfqsh6p/6KfuJNXrk2iniWDgoejDeTzmgTce4GxlFT\n1J1SikAsWxMBDGkvuEQVAnYH5z/Z2AFGvfvOefB8HDFlfEnTLEzSpth/3hWAf2bG\nrAhyQtNBAgMBAAECggEAIMF9MtjOIcxnNMtBlhb8JyurTL6Vt03WW4B2HQZ4CdIl\nnQzeb0JcGmV2Csp0YLYgQVXNtgPaUgIsvkdPZXO/rc/Si3tX6C/BywscJjplkgVf\nGOOwYuZA9SgrEs+981FLg+wfBoSsOR3AdOgx4yan4jqdaBzyaL8FAY+y5U4CitqE\nwcJPrUW/HZFmUBWCO0vCc+gtkRgUsdn3bFuOs+ulD15jFNxXMVAtGZJIRMinLdqp\nGPmSYBQng2vQugYuDx9wJi6BLXCasmaVP7p16JfRRXt6uzk0erHgeCfhCdDaSpiT\nFSKIvoNMhBUxN8KO9FLwm3TZobqQd6TOMkBR82VM2wKBgQDgHaB40dUBbWtjqB1o\nweTrADpgxQy+lFuVhn2WSDx3kRncdb2QHRAIDNm8jMaviJiEsBr0V+PcHShclVZU\nUvJQPHCXgaqXoFocOpgXuaE76w37SDEProCZ6lbdtoc5dNeVIYfK73sm6MHrnA5a\n/JpZyaRV6fGm6QBjJTOdlUiU8wKBgQDKx9jrgvczNTECrJYHhxtNq228cxWMierm\neYlqaQo/qadv7q+80tm0FMZEp0AaizK29+tLbALOSf5XiWIrnzfRDqIXZ+tYU5NI\nynKAuh8T1Hh/XelGeZP796n+FteJ7P2tWFBezy4k+DlWCTLaZp/m5XSYGnnt2gnq\nNvv0MHpT+wKBgH/2CojRbegpvHYjJ9+HTZgsAij8eWFbPctrBcvHpNaz/2sTws9E\n+MFP7QYt7seMm2CvWESI5i3obAIotijhTz8mszaeL3Pxd2HExtBNCdU3ST1fI7wL\na5v14/ElZaIVp32brnfdMpitrwNCkCO9NLftXKo9L9+YC8OQGx9vfAinAoGADQH8\n3D6udM54sl830IvOKJFSnMAVJcrDEr3BHt5WFfdgEkIRa99qr66VeVnxNsKvIiWN\nJm1rUKhWdG8PqRSxk+uIYk/8PNI/pG+4IKHP1InQoPr5N9gcshEVCoOUl/hn3XLI\n1QwdPaneo7I7XN8warNVY1xvbd6KvEeCqgtiDXkCgYBDUnPJShq4ta6cZOeaFJYA\nxB3CzqF2Seqpuu9lPGqjCULSABt+LMiz0Z9pFhhatBwenNAPEWKft+UxI+NM/sBD\nF9u5QT5HpSGZIwmJTUYIZEMcIoqPVtBeyDMbFG6dpxe+/58fvvmOIUDHtvXQTldJ\nrVi1UoYj6JG00N6cfI5VLw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "vdart-automation@vdartintern-project1.iam.gserviceaccount.com",
+  "client_id": "104013557962194254781",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vdart-automation%40vdartintern-project1.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
