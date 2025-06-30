@@ -1,0 +1,120 @@
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import smtplib
+from email.message import EmailMessage
+
+# ─── CONFIGURATION ─────────────────────────────────────────
+GOOGLE_SHEET_NAME = "Data sheet"
+CREDENTIALS_FILE = "vdartintern-project1-285fc1b1d8bc.json"
+GMAIL_COLUMN_NAME = "Email"
+STATUS_COLUMN_NAME = "confirm letter"  # Column to update with "Sent"
+
+SENDER_EMAIL = "vdartintern@gmail.com"
+SENDER_PASSWORD = "yqzs pjrd kmpt rcdt"
+
+SUBJECT = "Automated Email from Python"
+BODY = """
+Dear Candidate,
+
+Greetings from Vdart Academy.
+
+We are pleased to confirm your selection for the Academic Internship Program – June Batch at Vdart Academy. This internship is designed to provide practical industry exposure and essential skill development aligned with your academic and career goals.
+
+To initiate the processing of your Internship Invite Letter, send a new email to:
+example@vdartinc.com (do not reply to this email) with the following details and documents in the specified format.
+
+If you are not interested in proceeding with this internship, kindly ignore this email. No further action is required.
+
+Email Format (New Mail)
+
+Subject Line (when replying):
+Your Full Name - Domain
+Example: Ansari - Full Stack
+
+Include the following details in the body of your reply email:
+
+- Full Name:
+- Domain:
+- Register Number:
+- Internship Start Date:
+- Tentative Internship End Date:
+- First Graduate: Yes / No
+- Group or Individual
+
+Attach the following documents (using the file naming format: YourName_DocumentType)
+
+Required Documents:
+1. Aadhaar Card
+2. Resume
+3. College ID Card
+4. Passport-size Photograph
+
+Example File Names:
+• Ansari_Aadhaar
+• Ansari_Resume
+• Ansari_CollegeID
+• Ansari_Photo
+
+Kindly ensure that all required information and documents are submitted at the earliest to proceed with generating your Internship Invite Letter.
+
+For any queries or assistance, please feel free to contact us at 9944548333.
+
+We look forward to welcoming you to the June internship batch at Vdart Academy.
+
+--  
+Best Regards,  
+S Mohamed Thamimul Ansari  
+Subject Matter Expert - Full Stack Web Suite  
+Cell: +91 8870397119
+"""
+
+# ─── STEP 1: FETCH DATA FROM GOOGLE SHEET ─────────────────────────
+def get_sheet_and_rows():
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
+    client = gspread.authorize(creds)
+    sheet = client.open(GOOGLE_SHEET_NAME).sheet1
+    records = sheet.get_all_records()
+    return sheet, records
+
+# ─── STEP 2: SEND EMAIL ─────────────────────────
+def send_email(to_email):
+    msg = EmailMessage()
+    msg["From"] = SENDER_EMAIL
+    msg["To"] = to_email
+    msg["Subject"] = SUBJECT
+
+    plain_body = BODY
+    html_body = BODY.replace("\n", "<br>")
+    msg.set_content(plain_body)
+    msg.add_alternative(f"""\
+    <html>
+        <body style="color: black; font-family: Arial, sans-serif;">
+            {html_body}
+        </body>
+    </html>
+    """, subtype="html")
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(SENDER_EMAIL, SENDER_PASSWORD)
+        smtp.send_message(msg)
+
+# ─── STEP 3: MAIN ─────────────────────────
+if __name__ == "__main__":
+    print("📨 Fetching emails from Google Sheet...")
+    sheet, data = get_sheet_and_rows()
+    print(f"📋 Found {len(data)} rows.")
+
+    for i, row in enumerate(data):
+        email = row.get(GMAIL_COLUMN_NAME, "").strip()
+        status = row.get(STATUS_COLUMN_NAME, "").strip().lower()
+
+        if email and status != "sent":
+            try:
+                send_email(email)
+                sheet.update_cell(i + 2, list(data[0].keys()).index(STATUS_COLUMN_NAME) + 1, "Sent")
+                print(f"✅ Email sent and marked 'Sent' to {email}")
+            except Exception as e:
+                print(f"❌ Failed to send to {email}: {e}")
+        else:
+            print(f"⏩ Skipped {email or '(no email)'} - already marked as Sent.")
